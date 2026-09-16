@@ -94,7 +94,8 @@ gap."
   the structured logs for a multi-step operation (e.g. a transfer that
   triggers a fraud rule and creates a case).
 - **NFR-16** (Target) — Key business metrics (transfers/min, cases
-  opened/min, outbox lag) are exported and visible on a dashboard
+  opened/min, outbox lag, and count of `Open` cases past their `dueBy`
+  timestamp per FR-4.2) are exported and visible on a dashboard
   (Application Insights in the cloud deployment) within 1 minute of the
   underlying event.
 

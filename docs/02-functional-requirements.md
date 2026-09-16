@@ -92,9 +92,14 @@ integration tests.
   fixture transactions with known expected outcomes.
 - **FR-4.2** (MVP) — A transfer matched by any rule creates a **case** in
   a review queue, visible only to the `ComplianceOfficer` role, with the
-  triggering rule(s) named explicitly (never just a numeric score).
+  triggering rule(s) named explicitly (never just a numeric score), and a
+  `dueBy` timestamp set 24 hours from creation so an unresolved case is a
+  visible, alertable condition rather than funds held indefinitely with no
+  signal.
   *Acceptance:* `GET /compliance/cases` (role-gated, `403` for other
-  roles) lists cases with rule name, transaction, and status.
+  roles) lists cases with rule name, transaction, status, and `dueBy`; a
+  case past `dueBy` and still `Open` is surfaced by the case-aging metric
+  in [03-non-functional-requirements.md — NFR-16](03-non-functional-requirements.md).
 - **FR-4.3** (MVP) — A `ComplianceOfficer` can resolve a case as
   `Cleared` (transfer posts) or `Rejected` (transfer reverses, funds
   return to source).
