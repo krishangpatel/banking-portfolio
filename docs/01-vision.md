@@ -22,6 +22,34 @@ connected — those are simulated behind interfaces that document what the
 real integration would look like (see [06-component-inventory.md](06-component-inventory.md)
 for what's Acknowledged vs. actually built).
 
+## Where this sits in the real world
+
+This isn't a novel problem — no bank is waiting for Ledgerline, and it
+doesn't claim to be. It's a solo-scale, faithfully-engineered recreation of
+a problem space that real companies solve commercially today: **Increase,
+Modern Treasury, Formance, Unit, and Treasury Prime** are "ledger
+infrastructure" / banking-as-a-service companies whose entire product is
+exactly this — a correct double-entry ledger, idempotent money movement,
+and compliance workflows, sold to other companies as an API so those
+companies don't have to build core banking internals themselves. (Formance
+in particular came up directly in the domain research —
+[00-exploration.md §1.1](00-exploration.md#11-how-real-ledgercore-banking-systems-are-built).)
+Inside an actual bank, this same problem space is owned by a core-banking
+/ payments platform team — the group responsible for "the ledger is always
+right" being true so every other team can build on top of it without
+thinking about it.
+
+That's the accurate pitch, and the one to actually give a recruiter or
+interviewer: *not* "I solved a banking problem," but **"I built a
+solo-scale version of the exact problem class that Increase and Modern
+Treasury solve commercially, and that a bank's core-banking platform team
+owns internally, to prove I understand the hard problems in that space
+(idempotency, ledger consistency, compliance-as-a-workflow) and can
+engineer correct solutions to them — not just talk about them."** It's
+checkable, not just asserted: someone can go read Increase's or Modern
+Treasury's own engineering docs on idempotency and ledger design and see
+the same problem, solved the same way, in this repo.
+
 ## Who it's for
 
 1. **A recruiter**, skimming the README for two minutes, sees a clear
