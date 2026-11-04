@@ -297,13 +297,17 @@ time.
 - **Resume gaps:** none specifically requested to be proven out — component
   selection is driven by domain requirements and engineering merit (Hard
   Rule 5), not resume optics.
-- **Deployment budget:** ~$25-30/month while actively interviewing,
-  pausable after landing a job, slightly-over acceptable if justified. This
-  *overrides* Hard Rule 8's zero-budget default and unlocks a real cloud
-  deployment (see [04-architecture.md](04-architecture.md) cost story and
-  [ADR-0003](adr/0003-deployment-and-hosting.md)) — but the "clone and run
-  locally with one command" baseline in Hard Rule 8 still applies
-  regardless of cloud spend.
+- **Deployment budget:** ~$25-30/month as a standing cost, running
+  continuously (not paused) for the duration of the job search — the demo
+  link has to work whenever a recruiter or hiring manager clicks it, not
+  just during scheduled interview windows. Slightly-over acceptable if
+  justified. Pausable later (e.g. after landing a job, when the deployment
+  is no longer needed) as an optional step, not the default operating
+  mode. This *overrides* Hard Rule 8's zero-budget default and unlocks a
+  real cloud deployment (see [04-architecture.md](04-architecture.md) cost
+  story and [ADR-0003](adr/0003-deployment-and-hosting.md)) — but the
+  "clone and run locally with one command" baseline in Hard Rule 8 still
+  applies regardless of cloud spend.
 - **Repo visibility:** public under Krishang's real name from day one —
   every commit is reviewer-visible immediately.
 - **Target tech:** no specific job postings to weight toward — stack

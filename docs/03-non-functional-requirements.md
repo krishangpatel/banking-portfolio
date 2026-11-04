@@ -102,11 +102,14 @@ gap."
 ## Cost
 
 - **NFR-17** (Target) — Total cloud hosting cost stays within ~$25-30/
-  month while actively running, per [00-exploration.md — Assumptions](00-exploration.md#4-assumptions-i-can-override),
-  and can be paused (App Service stopped, SQL Database paused) to near-$0
-  between interview cycles. See [04-architecture.md](04-architecture.md)
-  cost story and [ADR-0003](adr/0003-deployment-and-hosting.md) for the
-  breakdown.
+  month as a standing cost with the deployment running continuously
+  (not paused) for the duration of the job search, per
+  [00-exploration.md — Assumptions](00-exploration.md#4-assumptions-i-can-override).
+  A pause runbook (App Service stopped, SQL Database paused) exists and is
+  documented for optional use once the deployment is no longer needed
+  (e.g. after landing a job) — it is not required to stay in budget
+  month-to-month. See [04-architecture.md](04-architecture.md) cost story
+  and [ADR-0003](adr/0003-deployment-and-hosting.md) for the breakdown.
 
 ## Maintainability
 

@@ -8,9 +8,14 @@ Accepted
 
 Hard Rule 8 defaults to a zero hosting budget with local-only execution as
 the baseline. Phase 0 revised this: Krishang is willing to spend ~$25-30/
-month (slightly over if justified) on hosting while actively interviewing,
-pausable to near-$0 afterward. This unlocks a real, linkable cloud
-deployment as an addition to — not a replacement for — the local baseline.
+month (slightly over if justified) on hosting, running continuously for
+the duration of the job search rather than paused between interviews —
+the demo link needs to work whenever a recruiter or hiring manager clicks
+it, not just when an interview happens to be scheduled. Pausing remains
+available as an optional cost-saving step for later (e.g. once a job is
+landed and the deployment is no longer needed). This unlocks a real,
+linkable cloud deployment as an addition to — not a replacement for — the
+local baseline.
 
 ## Decision
 
@@ -73,8 +78,13 @@ environment.
   and is **re-verified against the Azure Pricing Calculator immediately
   before first deployment** — that verification step is itself in
   [08-build-plan.md](../08-build-plan.md), not assumed away.
-- A pause runbook is a required deliverable (Demonstrated tier,
-  [06-component-inventory.md §2.7](../06-component-inventory.md)), not
-  optional — the whole point of the budget decision was "pausable after
-  landing a job," so the mechanism to actually do that has to exist and be
-  documented, not just be theoretically possible.
+- The deployment runs continuously during the job search; a pause runbook
+  is still a required deliverable (Demonstrated tier,
+  [06-component-inventory.md §2.7](../06-component-inventory.md)), but as
+  an optional mechanism for later — once the deployment is no longer
+  needed (e.g. after landing a job) — rather than something exercised
+  routinely to stay in budget. Azure SQL's serverless auto-pause (60 min
+  idle, per the Decision above) still does its own thing independently of
+  this runbook: it's a database-level compute optimization that pauses and
+  resumes automatically within a continuously-running deployment, not the
+  same as stopping the App Service.

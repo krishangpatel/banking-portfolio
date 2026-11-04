@@ -317,7 +317,8 @@ calculator to render exact current numbers (confirmed while researching
 this doc — the static pages show placeholders), so **the actual figure is
 re-verified against the Azure Pricing Calculator immediately before first
 deployment**, and that verification step is itself in
-[08-build-plan.md](08-build-plan.md) rather than assumed. See
+[08-build-plan.md](08-build-plan.md) rather than assumed. The deployment
+runs continuously at this cost for the duration of the job search — see
 [ADR-0003](adr/0003-deployment-and-hosting.md) for the full reasoning,
-including the pause/resume runbook for going near-$0 between interview
-cycles.
+including the pause/resume runbook kept as an optional step for later
+(e.g. once a job is landed), not a routine cost-saving measure.
