@@ -1,0 +1,70 @@
+name: ledgerline
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/Ledgerline.Api/Dockerfile
+    container_name: ledgerline-api
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+    depends_on:
+      - sqlserver
+      - servicebus-emulator
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ledgerline-sqlserver
+    environment:
+      ACCEPT_EULA: ${ACCEPT_EULA:-Y}
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Ledger_Dev2026!}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  # Azure Service Bus emulator, per ADR-0004: same messaging technology
+  # locally and in the cloud. The emulator needs its own dedicated SQL
+  # Server instance for internal state (per Microsoft's reference compose
+  # setup) — unrelated to, and separate from, the app's own `sqlserver`
+  # above. Topology (queues/topics) is empty until Phase 5 wires in real
+  # messaging; see infra/servicebus-emulator/Config.json.
+  servicebus-emulator:
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    container_name: ledgerline-servicebus-emulator
+    pull_policy: always
+    volumes:
+      - ./infra/servicebus-emulator/Config.json:/ServiceBus_Emulator/ConfigFiles/Config.json
+    ports:
+      - "5672:5672"
+      - "5300:5300"
+    environment:
+      SQL_SERVER: sb-mssql
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Ledger_Dev2026!}
+      ACCEPT_EULA: ${ACCEPT_EULA:-Y}
+      EMULATOR_HTTP_PORT: 5300
+    depends_on:
+      - sb-mssql
+    networks:
+      sb-emulator:
+        aliases:
+          - sb-emulator
+
+  sb-mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ledgerline-sb-mssql
+    environment:
+      ACCEPT_EULA: ${ACCEPT_EULA:-Y}
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Ledger_Dev2026!}
+    networks:
+      sb-emulator:
+        aliases:
+          - sb-mssql
+
+networks:
+  sb-emulator:
+
+volumes:
+  sqlserver-data:
