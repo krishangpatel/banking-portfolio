@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ledgerline.Accounts\Ledgerline.Accounts.csproj" />
+    <ProjectReference Include="..\Ledgerline.Ledger\Ledgerline.Ledger.csproj" />
+    <ProjectReference Include="..\Ledgerline.Transfers\Ledgerline.Transfers.csproj" />
+    <ProjectReference Include="..\Ledgerline.Fraud\Ledgerline.Fraud.csproj" />
+    <ProjectReference Include="..\Ledgerline.Compliance\Ledgerline.Compliance.csproj" />
+    <ProjectReference Include="..\Ledgerline.Audit\Ledgerline.Audit.csproj" />
+    <ProjectReference Include="..\Ledgerline.Infrastructure\Ledgerline.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

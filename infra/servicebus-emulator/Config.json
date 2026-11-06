@@ -1,0 +1,14 @@
+{
+  "UserConfig": {
+    "Namespaces": [
+      {
+        "Name": "ledgerline",
+        "Queues": [],
+        "Topics": []
+      }
+    ],
+    "Logging": {
+      "Type": "File"
+    }
+  }
+}

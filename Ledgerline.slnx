@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Ledgerline.Accounts/Ledgerline.Accounts.csproj" />
+    <Project Path="src/Ledgerline.Api/Ledgerline.Api.csproj" />
+    <Project Path="src/Ledgerline.Audit/Ledgerline.Audit.csproj" />
+    <Project Path="src/Ledgerline.Compliance/Ledgerline.Compliance.csproj" />
+    <Project Path="src/Ledgerline.Fraud/Ledgerline.Fraud.csproj" />
+    <Project Path="src/Ledgerline.Infrastructure/Ledgerline.Infrastructure.csproj" />
+    <Project Path="src/Ledgerline.Ledger/Ledgerline.Ledger.csproj" />
+    <Project Path="src/Ledgerline.Transfers/Ledgerline.Transfers.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Ledgerline.Tests/Ledgerline.Tests.csproj" />
+  </Folder>
+</Solution>
